@@ -1,0 +1,25 @@
+class Solution:
+    def levelOrderBottom(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        # 广度优先搜索BFS
+        res = []
+        if not root:
+            return res
+        q = [root]
+        while len(q) > 0 :
+            res.append([node.val for node in q])
+            new_q = []
+            for node in q:
+                if node.left:
+                    new_q.append(node.left)
+                if node.right:
+                    new_q.append(node.right)
+                    
+            q = new_q
+            
+            
+            
+        return res[::-1]
