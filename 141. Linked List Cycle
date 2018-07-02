@@ -1,0 +1,16 @@
+class Solution(object):
+    def hasCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        # 使用字典储存已有的节点
+        cur = head
+        seen = {}
+        while cur:
+            if cur in seen:
+                return True
+            seen[cur] = 0
+            cur = cur.next
+            
+        return False
