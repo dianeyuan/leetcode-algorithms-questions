@@ -1,0 +1,38 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def getIntersectionNode(self, headA, headB):
+        """
+        :type head1, head1: ListNode
+        :rtype: ListNode
+        """      
+        
+        if headA == None and headB == None:
+            return None
+        lenA = self.getLength(headA)
+        lenB = self.getLength(headB)
+        # 从两个链表长度相等的部分开始,逐一比较
+        if lenA > lenB:
+            for i in range(lenA-lenB):
+                headA = headA.next
+                
+        else:
+            for i in range(lenB - lenA):
+                headB = headB.next
+        # 如果到达交叉点,会返回;如果两个都到了末尾,成为None, 也会返回       
+        while headA != headB:
+            headA, headB = headA.next, headB.next
+        return headA
+            
+    def getLength(self, node):
+        # 计算链表的长度
+        i = 0
+        while node:
+            i += 1
+            node = node.next
+            
+        return i
