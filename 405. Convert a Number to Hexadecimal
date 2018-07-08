@@ -1,0 +1,19 @@
+class Solution(object):
+    def toHex(self, num):
+        """
+        :type num: int
+        :rtype: str
+        """
+        mp = '0123456789abcdef'
+        ans = []
+        if num == 0:
+            return '0'
+        if num < 0:
+            # 负数取补码, 即绝对值的反码+1
+            num = 0xffffffff + num + 1
+        while num > 0:
+            div, rem = divmod(num, 16)
+            ans.append(mp[rem])
+            num = num //16
+            
+        return ''.join(ans[::-1])
