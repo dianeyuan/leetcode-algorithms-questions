@@ -1,0 +1,22 @@
+class Solution(object):
+    def findContentChildren(self, g, s):
+        """
+        :type g: List[int]
+        :type s: List[int]
+        :rtype: int
+        """
+        # 贪心算法
+        count = 0
+        g.sort()
+        s.sort()
+        j = 0
+        for greed in g:
+            while j < len(s):
+                if greed <= s[j]:
+                    count += 1
+                    j += 1
+                    break
+                else:
+                    j += 1
+                    
+        return count
