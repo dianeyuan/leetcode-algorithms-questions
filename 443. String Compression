@@ -1,0 +1,21 @@
+class Solution(object):
+    def compress(self, chars):
+        """
+        :type chars: List[str]
+        :rtype: int
+        """
+        idx_r, idx_w = 0,0
+        while idx_r < len(chars):
+            ch, f = chars[idx_r], 0
+            while idx_r < len(chars) and chars[idx_r] == ch:
+                idx_r += 1
+                f += 1
+            chars[idx_w] = ch
+            idx_w += 1
+            if f > 1:
+                
+                for s in str(f):
+                    chars[idx_w] = s
+                    idx_w += 1
+                    
+        return idx_w     
