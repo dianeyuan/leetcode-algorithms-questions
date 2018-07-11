@@ -1,0 +1,15 @@
+class Solution(object):
+    def convertToTitle(self, n):
+        """
+        :type n: int
+        :rtype: str
+        """
+        # 除以26的余数对应的字母, 累加
+        ans = ''
+        while n:
+            n -= 1
+            digit = n%26
+            ans  = chr(ord('A') + digit) + ans
+            n = n//26
+            
+        return ans
