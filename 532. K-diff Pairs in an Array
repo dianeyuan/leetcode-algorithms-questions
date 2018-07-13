@@ -1,0 +1,16 @@
+class Solution:
+    def findPairs(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        res = 0
+        count = collections.Counter(nums)
+        for n in count:
+            if k > 0 and n+k in count:
+                res += 1
+            elif k == 0 and count[n] > 1:
+                res += 1                    
+                        
+        return res
