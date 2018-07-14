@@ -1,0 +1,16 @@
+class Solution(object):
+    def poorPigs(self, buckets, minutesToDie, minutesToTest):
+        """
+        :type buckets: int
+        :type minutesToDie: int
+        :type minutesToTest: int
+        :rtype: int
+        """
+        # 计算每个猪能测试的行/列数
+        r = minutesToTest//minutesToDie + 1
+        # n个猪最多能测r**n个桶, 求 r**n >= buckets
+        n = 0
+        while r**(n) < buckets:
+            n += 1
+            
+        return n
