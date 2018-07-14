@@ -1,0 +1,18 @@
+class Solution:
+    def tree2str(self, t):
+        """
+        :type t: TreeNode
+        :rtype: str
+        """
+        if not t:
+            return ''
+        ans = str(t.val)
+        # 如果t有节点, 则必须加上左节点
+        if t.left or t.right:
+            ans += '(' + self.tree2str(t.left) + ')'
+            
+        # 如果t有右节点,则必须加上右节点
+        if t.right:
+            ans += '(' + self.tree2str(t.right) + ')'
+            
+        return ans
