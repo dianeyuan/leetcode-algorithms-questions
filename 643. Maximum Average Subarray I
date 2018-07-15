@@ -1,0 +1,17 @@
+class Solution:
+    def findMaxAverage(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: float
+        """
+        # 滑动窗口
+        m = sum(nums[:k])
+        n = m
+        
+        for i in range(len(nums) - k):
+            n = n - nums[i] + nums[i+k]
+            m = max(m, n)
+            
+        return m/k
+            
