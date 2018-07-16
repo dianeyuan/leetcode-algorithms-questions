@@ -1,0 +1,18 @@
+class Solution:
+    def findShortestSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        count = collections.Counter(nums)
+        degree = max(count.values())
+        maxs, mins = {}, {}
+        for index, num in enumerate(nums):
+            maxs[num] = max(maxs.get(num, -1), index)
+            mins[num] = min(mins.get(num, sys.maxsize), index)
+        ans = len(nums)    
+        for num in maxs:
+            if count[num] == degree:
+                ans = min(ans, maxs[num] - mins[num] + 1)
+                
+        return ans
