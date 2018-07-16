@@ -1,0 +1,20 @@
+class Solution:
+    def findTarget(self, root, k):
+        """
+        :type root: TreeNode
+        :type k: int
+        :rtype: bool
+        """
+        if not root:
+            return False
+        dfs, seen = [root], []
+        for i in dfs:
+            if k - i.val in seen:
+                return True
+            seen.append(i.val)
+            if i.left:
+                dfs.append(i.left)
+            if i.right:
+                dfs.append(i.right)
+                
+        return False
