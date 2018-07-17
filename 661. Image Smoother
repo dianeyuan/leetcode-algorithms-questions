@@ -1,0 +1,21 @@
+class Solution:
+    def imageSmoother(self, M):
+        """
+        :type M: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        row, col = len(M), len(M[0])
+        result = [[0]*col for r in M]
+        for i in range(row):
+            for j in range(col):
+                total, count = 0,0
+                for a in [-1,0,1]:
+                    for b in [-1,0,1]:
+                        r = i + a
+                        c = j + b
+                        if 0<= r < row and 0<= c < col:
+                            total += M[r][c]
+                            count += 1
+                result[i][j] = math.floor(total/ count)
+                
+        return result
