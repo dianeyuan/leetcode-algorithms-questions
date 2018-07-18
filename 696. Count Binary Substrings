@@ -1,0 +1,10 @@
+class Solution:
+    def countBinarySubstrings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        s_list = s.replace('01','0 1').replace('10','1 0').split()
+        count = list(map(len, s_list))
+        ans = [min(i,j) for i,j in zip(count, count[1:])]
+        return sum(ans)
