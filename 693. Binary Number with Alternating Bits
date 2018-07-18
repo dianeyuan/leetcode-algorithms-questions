@@ -1,0 +1,10 @@
+class Solution:
+    def hasAlternatingBits(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        b = bin(n)
+        if '11' in b or '00' in b:
+            return False
+        return True 
