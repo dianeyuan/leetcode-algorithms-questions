@@ -1,0 +1,29 @@
+class KthLargest:
+
+    def __init__(self, k, nums):
+        """
+        :type k: int
+        :type nums: List[int]
+        """
+        self.nums = nums
+        self.k = k
+        self.size = len(self.nums)
+        heapq.heapify(self.nums)
+        while self.size > k:
+            heapq.heappop(self.nums)
+            self.size -= 1            
+        
+
+    def add(self, val):
+        """
+        :type val: int
+        :rtype: int
+        """
+        if self.size < self.k:
+            heapq.heappush(self.nums, val)
+            self.size += 1
+        elif val > self.nums[0]:
+            heapq.heapreplace(self.nums, val)
+            
+        return self.nums[0]
+        
