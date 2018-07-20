@@ -1,0 +1,31 @@
+class Solution:
+    def buddyStrings(self, A, B):
+        """
+        :type A: str
+        :type B: str
+        :rtype: bool
+        """
+        if len(A) != len(B):
+            return False
+        # A和B相同时, A必须存在重复字符
+        if A == B:
+            seen = set()
+            for c in A:
+                if c in seen:
+                    return True
+                else:
+                    seen.add(c)
+            return False
+        # A和B不相同时, 记录不相同的次数, 如果只有两次并且A交换字母后和B相同, 为真
+        else:
+            diff = 0
+            index = []
+            for i, ch in enumerate(A):
+                if ch != B[i]:
+                    diff += 1
+                    index.append(i)
+                    
+            if diff == 2 and A[index[0]] == B[index[1]] and A[index[1]] == B[index[0]]:
+                return True
+            return False
+                
