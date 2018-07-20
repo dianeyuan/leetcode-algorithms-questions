@@ -8,11 +8,13 @@ class Solution:
         
         for cp in cpdomains:
             # split cp, get the count, get all the domains:
-            count, domain = int(cp.split()[0]), cp.split()[0]
+            count, domain = cp.split()
+            count = int(count)
             sub[domain] += count
             while '.' in domain:
                 domain = domain[domain.index('.') + 1:]
                 sub[domain] += count
                 
-        ans = [str(v) + ' '+ k for k, v in sub]
+        ans = [str(v) + ' '+ k for k, v in sub.items()]
         return ans
+                
