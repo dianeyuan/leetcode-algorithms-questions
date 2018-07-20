@@ -1,0 +1,14 @@
+class Solution:
+    def minCostClimbingStairs(self, cost):
+        """
+        :type cost: List[int]
+        :rtype: int
+        """
+        # 动态规划,令dp[n]为爬到第N层的最小花费
+        # dp[n] = min(dp[n-1] + cost[n-1], dp[n-2] + cost[n-2])
+        # 初始化dp
+        dp = [0, 0]
+        for i in range(2, len(cost)):
+            dp.append(min(dp[i-1] + cost[i-1], dp[i-2] + cost[i-2]))
+            
+        return min(dp[-1]+ cost[-1], dp[-2] + cost[-2])
