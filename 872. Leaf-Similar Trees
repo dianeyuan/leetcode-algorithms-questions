@@ -1,0 +1,27 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def leafSimilar(self, root1, root2):
+        """
+        :type root1: TreeNode
+        :type root2: TreeNode
+        :rtype: bool
+        """
+        # 先序遍历, 返回叶子列表
+        def preOrder(root):
+            leaves = []
+            if not root:
+                return leaves
+            if root.left is None and root.right is None:
+                leaves.append(root.val)
+            # 将leaves的值加上左右子树的值
+            leaves.extend(preOrder(root.left))
+            leaves.extend(preOrder(root.right))
+            return leaves
+            
+        return preOrder(root1) == preOrder(root2)
