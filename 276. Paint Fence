@@ -1,0 +1,19 @@
+class Solution(object):
+    def numWays(self, n, k):
+        """
+        :type n: int
+        :type k: int
+        :rtype: int
+        """
+        if n == 0: return 0
+        if n == 1: return k
+        '''
+        动态规划, 当n = 2时, 分为与前一个相同与不同分法,两个相同时, 为k, 两个不同时, 为k*(k-1)
+        dp(n) = 第n个颜色与n-1相同, 或不同
+              = diff(n-1), (same(n-1) + diff(n-1))*(k-1)
+        '''
+        same, diff = k, k*(k-1)
+        for i in range(3, n+1):
+            same, diff = diff, (same+diff)*(k-1)
+            
+        return same + diff
