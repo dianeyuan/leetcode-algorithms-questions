@@ -1,0 +1,16 @@
+class Solution(object):
+    def isStrobogrammatic(self, num):
+        """
+        :type num: str
+        :rtype: bool
+        """
+        keys = ['0','1','8','6','9']
+        vals = ['0','1','8','9','6']
+        mp = dict(zip(keys, vals))
+        rotated = ''
+        for n in num[::-1]:
+            if n not in mp:
+                return False
+            rotated += mp[n]
+            
+        return rotated == num
