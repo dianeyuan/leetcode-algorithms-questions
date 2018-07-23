@@ -1,0 +1,17 @@
+class Solution(object):
+    def depthSum(self, nestedList):
+        """
+        :type nestedList: List[NestedInteger]
+        :rtype: int
+        """
+        # 深度优先搜寻, 算深度为i时的总和
+        def dfs(nestedList, depth):
+            s = 0
+            for i in nestedList:
+                if i.isInteger():
+                    s += i.getInteger()*depth
+                else:
+                    s += dfs(i.getList(), depth+1)
+                    
+            return s
+        return dfs(nestedList, 1)
